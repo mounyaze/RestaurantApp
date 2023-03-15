@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RestaurantApp.Data;
+using RestaurantApp.Data.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,9 +11,16 @@ namespace RestaurantApp.Web.Api
 {
     public class RestaurantsController : ApiController
     {
-        public String Get() 
+        private readonly IRestaurantData db;
+
+        public RestaurantsController(IRestaurantData db)
         {
-            return "hey there its me again !";
+            this.db = db;
+        }
+        public IEnumerable<Restaurant> Get() 
+        {
+            var mdoel = db.GetAll();
+            return mdoel;
         }
     }
 }
