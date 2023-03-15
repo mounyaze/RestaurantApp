@@ -11,9 +11,14 @@ namespace RestaurantApp.Web.Controllers
     public class HomeController : Controller
     {
         IRestaurantData db;
+        public HomeController(IRestaurantData db)
+        {
+            this.db = db;
+        }
         public ActionResult Index()
         {
-            return View();
+            var model = db.GetAll();
+            return View(model);
         }
 
         public ActionResult About()
