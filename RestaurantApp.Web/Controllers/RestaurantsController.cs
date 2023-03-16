@@ -47,17 +47,43 @@ namespace RestaurantApp.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Restaurant restaurant)
         {
-            if (string.IsNullOrEmpty(restaurant.Name))
+            /*if (string.IsNullOrEmpty(restaurant.Name))
             {
                 ModelState.AddModelError(nameof(restaurant.Name), "The name is required LABGHITI ZE3MA");
-            }
+            }*/
+
             if (ModelState.IsValid)
             {
             
                 db.Add(restaurant);
-                return View();
+                return RedirectToAction("Details", new { id = restaurant.Id});
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id) 
+        {
+            var model = db.Get(id);
+            if (model == null)
+            { 
+                return HttpNotFound();
+            }
+            return View(model);
+            
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Restaurant restaurant)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.Update(restaurant);
+                return RedirectToAction("Details", new { id = restaurant.Id });
+            }
+            return View(restaurant);
+        }
+        
     }
 }

@@ -34,6 +34,16 @@ namespace RestaurantApp.Data.Services
             return restaurants.OrderBy(r => r.Name);
 
         }
+
+        public void Update(Restaurant restaurant)
+        {
+            var updatedRestaurant = Get(restaurant.Id);
+            if(updatedRestaurant != null)
+            {
+                updatedRestaurant.Name= restaurant.Name;
+                updatedRestaurant.Cuisine= restaurant.Cuisine;
+            }
+        }
     }
 
 }
