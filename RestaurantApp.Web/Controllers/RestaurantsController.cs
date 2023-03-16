@@ -1,4 +1,5 @@
-﻿using RestaurantApp.Data.Services;
+﻿using RestaurantApp.Data;
+using RestaurantApp.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,14 @@ namespace RestaurantApp.Web.Controllers
         {
             this.db = db;
         }
+        [HttpGet]
         public ActionResult Index()
         {
             var model = db.GetAll();
             return View(model);
         }
+
+        [HttpGet]
         public ActionResult Details(int id)
         { 
 
@@ -32,10 +36,28 @@ namespace RestaurantApp.Web.Controllers
             }
             return View(model);
         }
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
          
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Restaurant restaurant)
+        {
+            if (string.IsNullOrEmpty(restaurant.Name))
+            {
+                ModelState.AddModelError(nameof(restaurant.Name), "The name is required LABGHITI ZE3MA");
+            }
+            if (ModelState.IsValid)
+            {
+            
+                db.Add(restaurant);
+                return View();
+            }
+            return View();
         }
     }
 }
