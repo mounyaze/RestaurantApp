@@ -54,6 +54,8 @@
     <Compile Include="Models\CuisineType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Services\SqlRestaurantData.cs" />
+    <Compile Include="Services\RestaurantAppContext.cs" />
     <Compile Include="Services\InMemoryRestaurantData.cs" />
     <Compile Include="Services\IRestaurantData.cs" />
   </ItemGroup>

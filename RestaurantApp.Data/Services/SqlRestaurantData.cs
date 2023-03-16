@@ -21,6 +21,13 @@ namespace RestaurantApp.Data.Services
             db.SaveChanges();   
         }
 
+        public void Delete(int id)
+        {
+            var restaurant = db.restaurants.Find(id);
+            db.restaurants.Remove(restaurant);
+            db.SaveChanges();
+        }
+
         public Restaurant Get(int id)
         {
             return db.restaurants.FirstOrDefault(r => r.Id == id);

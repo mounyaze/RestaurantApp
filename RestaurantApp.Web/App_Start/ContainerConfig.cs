@@ -22,6 +22,8 @@ namespace RestaurantApp.Web
             builder.RegisterType<InMemoryRestaurantData>()
                    .As<IRestaurantData>()
                    .SingleInstance();
+            builder.RegisterType<SqlRestaurantData>().As<IRestaurantData>().InstancePerRequest();
+            builder.RegisterType<RestaurantAppContext>().InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
