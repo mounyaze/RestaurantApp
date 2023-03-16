@@ -12,6 +12,7 @@ namespace RestaurantApp.Data
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public String Name { get; set; }
 
         [Display(Name="Type of food")]
