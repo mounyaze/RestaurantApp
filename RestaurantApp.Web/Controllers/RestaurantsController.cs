@@ -80,6 +80,7 @@ namespace RestaurantApp.Web.Controllers
             {
 
                 db.Update(restaurant);
+                TempData["Message"] = "You have successusfully edited your data !!!";
                 return RedirectToAction("Details", new { id = restaurant.Id });
             }
             return View(restaurant);
