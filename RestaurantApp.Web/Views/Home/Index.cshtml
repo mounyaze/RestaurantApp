@@ -6,13 +6,21 @@
 
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <h1 id="title">Restaurant Application</h1>
+        <p class="lead">My First Depoloyed VERY SIMPLE ASP .Net Application :D </p>
         <p>
-            there are @Model.Count() Restaurants in DataBase :
+            there are so far @Model.Count() Restaurants in my DataBase :
         </p>
+        <ul>
+            @foreach (var restaurant in Model) {
+
+            <li>
+                @restaurant.Name
+            </li>
+            }
+        </ul>
         
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+        <p><a href="https://www.youtube.com/channel/UC6UW2BBfFnsppOQMDGBzsSw" class="btn btn-primary btn-md">My Youtube Channel &raquo;</a></p>
     </section>
 
     

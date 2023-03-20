@@ -1,0 +1,5 @@
+﻿CREATE LOGIN [IIS APPPOOL\RestaurantAppRedo] FROM WINDOWS 
+GO
+
+ALTER SERVER ROLE [dbcreator] ADD MEMBER [IIS APPPOOL\RestaurantAppRedo]
+GO
